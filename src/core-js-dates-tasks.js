@@ -57,7 +57,7 @@ function getDayName(date) {
     'Friday',
     'Saturday',
   ];
-  return daynamesArray[day.getDay()];
+  return daynamesArray[day.getUTCDay()];
 }
 
 /**
@@ -73,7 +73,7 @@ function getDayName(date) {
  */
 function getNextFriday(date) {
   const day = new Date(date);
-  const currentDay = day.getDay();
+  const currentDay = day.getUTCDay();
   const fridayNumber = 5;
 
   let daysToAdd = (7 + fridayNumber - currentDay) % 7;
@@ -81,7 +81,7 @@ function getNextFriday(date) {
     daysToAdd = 7;
   }
 
-  day.setDate(day.getDate() + daysToAdd);
+  day.setUTCDate(day.getUTCDate() + daysToAdd);
   return day;
 }
 
